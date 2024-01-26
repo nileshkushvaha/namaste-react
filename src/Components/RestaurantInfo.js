@@ -2,24 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { useParams } from "react-router-dom";
+import useRestrauntMenu from "../Utils/useRestrauntMenu";
 
 const RestaurantInfo = () => {
 
     const { resId } = useParams();
 
-    const [restroInfo, setRestroInfo] = useState(null);
-
-    useEffect(() => {
-        fetchRestaurantInfo();
-    }, []);
-
-    const fetchRestaurantInfo = async () => {
-        const data = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6342693&lng=77.0845064&restaurantId=${resId}`);
-
-        const json = await data.json();
-        console.log(json?.data);
-        setRestroInfo(json?.data);
-    }
+    const restroInfo = useRestrauntMenu(resId);
 
     if (restroInfo === null) {
         return <ShimmerSimpleGallery row={2} col={4} card imageHeight={300} caption />

@@ -38,7 +38,7 @@ const RestaurantCard = (props) => {
                         </div>
                         <div className="status" style={statusStyle}>
                             <div className="status-title">
-                                {aggregatedDiscountInfoV3.discountTag || 'Promoted'}
+                                {aggregatedDiscountInfoV3?.discountTag || 'Promoted'}
                             </div>
                         </div>
                         <div className="place-name-div">
@@ -63,7 +63,7 @@ const RestaurantCard = (props) => {
                             <span className="icon-offer-filled">
                                 <i className="fa-solid fa-tag"></i>
                             </span>
-                            <span className="offer-text">{aggregatedDiscountInfoV3.header} | {aggregatedDiscountInfoV3.subHeader}</span>
+                            <span className="offer-text">{aggregatedDiscountInfoV3?.header} | {aggregatedDiscountInfoV3?.subHeader}</span>
                         </div>
                     </div>
                     <div className="quick-view">

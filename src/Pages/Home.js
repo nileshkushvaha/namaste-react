@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import RestaurantCard from '../Components/RestaurantCard';
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
+import useOnlineStatus from '../Utils/useOnlineStatus';
 
 const Home = () => {
     const [restaurantList, setRestaurantList] = useState([]);
@@ -22,6 +23,13 @@ const Home = () => {
         setRestaurantList(jsonObj);
         setFilterdRestaurant(jsonObj);
     }
+
+    const onlineStatus = useOnlineStatus();
+
+    if (onlineStatus === false) 
+    return (
+    <h1>Looks like you are offline.</h1>
+    );
 
     return (
         <>
